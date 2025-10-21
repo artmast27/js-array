@@ -1,35 +1,54 @@
 const students = [
   { name: "John", age: 20, score: 85 },
   { name: "Jane", age: 22, score: 92 },
-  { name: "Jim", age: 19, score: 75 },
+  { name: "Jim", age: 19, score: 50 },
   { name: "Jill", age: 21, score: 65 },
   { name: "Jack", age: 23, score: 95 },
 ];
 
-// Ваше завдання: реалізувати наступні функції
-
 // 1. getTopScoringStudents
-// Приймає масив студентів та повертає масив імен студентів, які мають оцінку більше 80
+// Повертає масив імен студентів, які мають оцінку > 80
 function getTopScoringStudents(students) {
-  // Ваш код тут
+  const result = [];
+  for (let i = 0; i < students.length; i++) {
+    if (students[i].score > 80) {
+      result.push(students[i].name);
+    }
+  }
+  return result;
 }
 
 // 2. getAverageAge
-// Приймає масив студентів та повертає середній вік студентів
+// Повертає середній вік студентів
 function getAverageAge(students) {
-  // Ваш код тут
+  let sum = 0;
+  for (let i = 0; i < students.length; i++) {
+    sum += students[i].age;
+  }
+  return students.length > 0 ? sum / students.length : 0;
 }
 
 // 3. addStudent
-// Приймає масив студентів та новий об'єкт студента і додає його до масиву
+// Додає нового студента (НЕ модифікує оригінальний масив)
 function addStudent(students, student) {
-  // Ваш код тут
+  const newArr = [];
+  for (let i = 0; i < students.length; i++) {
+    newArr.push(students[i]);
+  }
+  newArr.push(student);
+  return newArr;
 }
 
 // 4. removeStudentByName
-// Приймає масив студентів та ім'я студента, якого потрібно видалити, і повертає новий масив без цього студента
+// Видаляє студента за ім’ям та повертає новий масив
 function removeStudentByName(students, name) {
-  // Ваш код тут
+  const newArr = [];
+  for (let i = 0; i < students.length; i++) {
+    if (students[i].name !== name) {
+      newArr.push(students[i]);
+    }
+  }
+  return newArr;
 }
 
 module.exports = { getTopScoringStudents, getAverageAge, addStudent, removeStudentByName };
